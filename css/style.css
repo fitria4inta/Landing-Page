@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Abigail Bakery | Artisanal Breads, Cakes & Pastries</title>
+    <!-- Google Fonts & simple CSS reset -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://images.pexels.com/photos/2067421/pexels-photo-2067421.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Overlay gelap + gradient */
+        .overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(0,0,0,0.6),
+                rgba(0,0,0,0.7)
+            );
+            backdrop-filter: blur(2px);
+        }
+
+        /* Konten utama */
+        .hero-content {
+            position: relative;
+            color: white;
+            z-index: 2;
+            animation: fadeIn 1.5s ease-in-out;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 60px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 25px;
+            font-weight: 300;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Button */
+        .hero-btn {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-btn button {
+            padding: 12px 25px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 30px;
+            transition: 0.3s;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .hero-btn a {
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #c59d5f;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #a67c3c;
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 50px;
+            display: inline-block;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: black;
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+
+        /* Animasi */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ABOUT */
+        .about {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #2c2c2c;
+        }
+
+        .about p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* MENU */
+        .menu {
+            padding: 80px 20px;
+            background: #f5f5f5;
+            text-align: center;
+        }
+
+        .menu h2 {
+            font-size: 36px;
+            margin-bottom: 16px;
+            color: #2c2c2c;
+        }
+
+        .menu-sub {
+            color: #a67c3c;
+            margin-bottom: 40px;
+            font-weight: 500;
+        }
+
+        /* GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* CARD */
+        .card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: 0.4s;
+            position: relative;
+        }
+
+        /* IMAGE */
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        /* BODY */
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-body h3 {
+            margin: 10px 0 6px;
+            font-size: 20px;
+            color: #2c2c2c;
+        }
+
+        .card-body p {
+            color: #c59d5f;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+        }
+
+        /* HOVER EFFECT */
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* BOOKING SECTION */
+        .booking {
+            padding: 80px 20px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)),
+                        url('https://images.pexels.com/photos/305466/pexels-photo-305466.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+            color: white;
+        }
+
+        .booking-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .booking-text h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .booking-text p {
+            margin-bottom: 30px;
+            font-size: 16px;
+            color: #ddd;
+        }
+
+        /* FORM */
+        .booking-form {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+
+        .booking-form input, 
+        .booking-form select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-family: 'Poppins', sans-serif;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .booking-form select {
+            cursor: pointer;
+        }
+
+        /* BUTTON */
+        .booking-form button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            background: #c59d5f;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .booking-form button:hover {
+            background: #a67c3c;
+            transform: scale(1.03);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #1c1c1c;
+            color: #ccc;
+            padding: 50px 20px 20px;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .footer-col h3,
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            margin: 5px 0;
+            line-height: 1.4;
+        }
+
+        /* SOCIAL */
+        .social a {
+            display: block;
+            text-decoration: none;
+            color: #ccc;
+            margin: 5px 0;
+            transition: 0.3s;
+            font-size: 14px;
+        }
+
+        .social a:hover {
+            color: #c59d5f;
+            padding-left: 5px;
+        }
+
+        /* BOTTOM */
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+            font-size: 13px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .grid {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 44px;
+            }
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                text-align: left;
+            }
+            .about {
+                padding: 60px 20px;
+            }
+            .menu {
+                padding: 60px 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero-content h1 {
+                font-size: 36px;
+            }
+            .hero-btn {
+                flex-direction: column;
+                align-items: center;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .social a {
+                text-align: center;
+            }
+            .booking-form {
+                padding: 20px;
+            }
+        }
+
+        /* simple alert style */
+        .toast-msg {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #c59d5f;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 40px;
+            font-size: 14px;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: 0.2s;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="overlay"></div>
+    <div class="hero-content">
+        <h1>Abigail Bakery</h1>
+        <p>Handcrafted with love & tradition — artisanal breads, exquisite cakes, and buttery pastries baked fresh daily.</p>
+        <div class="hero-btn">
+            <a href="#menu" class="btn-primary">Explore Menu</a>
+            <a href="#booking" class="btn-secondary">Reserve a Table</a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about" id="about">
+    <h2>Our Story</h2>
+    <p>Nestled in the heart of the city, Abigail Bakery brings warmth and nostalgia through every loaf, slice, and bite. 
+    Using only premium ingredients and time-honored recipes, we transform flour, butter, and passion into unforgettable treats. 
+    From crusty artisan bread to delicate tiramisu, every creation tells a story of craftsmanship and love.</p>
+</section>
+
+<!-- Menu Section (Bread, Cake, Pastry categories with exact product list) -->
+<section class="menu" id="menu">
+    <h2>Our Signature Bakes</h2>
+    <p class="menu-sub">Fresh from the oven, made to enchant</p>
+    
+    <div class="grid">
+        <!-- BREAD category - garlic bread, cheese potato bread, chocolate banana bread -->
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/2067419/pexels-photo-2067419.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Garlic Bread">
+            </div>
+            <div class="card-body">
+                <h3>Garlic Bread</h3>
+                <p>🍞 Bread · Buttery garlic crust</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/2067435/pexels-photo-2067435.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cheese Potato Bread">
+            </div>
+            <div class="card-body">
+                <h3>Cheese Potato Bread</h3>
+                <p>🥔 Bread · Creamy cheesy melt</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/374899/pexels-photo-374899.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chocolate Banana Bread">
+            </div>
+            <div class="card-body">
+                <h3>Chocolate Banana Bread</h3>
+                <p>🍌 Bread · Sweet moist loaf</p>
+            </div>
+        </div>
+        
+        <!-- CAKE category - cheesecake, tiramisu cake, red velvet cake -->
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/1721934/pexels-photo-1721934.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cheesecake">
+            </div>
+            <div class="card-body">
+                <h3>Cheesecake</h3>
+                <p>🍰 Cake · Velvety & smooth</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/7474961/pexels-photo-7474961.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Tiramisu Cake">
+            </div>
+            <div class="card-body">
+                <h3>Tiramisu Cake</h3>
+                <p>☕ Cake · Coffee-kissed layers</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/2814828/pexels-photo-2814828.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Red Velvet Cake">
+            </div>
+            <div class="card-body">
+                <h3>Red Velvet Cake</h3>
+                <p>🍒 Cake · Rich cream cheese</p>
+            </div>
+        </div>
+        
+        <!-- PASTRY category - butter croissant, pain au chocolat, red velvet cinnamon roll -->
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/3616298/pexels-photo-3616298.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Butter Croissant">
+            </div>
+            <div class="card-body">
+                <h3>Butter Croissant</h3>
+                <p>🥐 Pastry · Flaky & golden</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/3648325/pexels-photo-3648325.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pain au Chocolat">
+            </div>
+            <div class="card-body">
+                <h3>Pain au Chocolat</h3>
+                <p>🍫 Pastry · Dark chocolate filled</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-img">
+                <img src="https://images.pexels.com/photos/2059612/pexels-photo-2059612.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Red Velvet Cinnamon Roll">
+            </div>
+            <div class="card-body">
+                <h3>Red Velvet Cinnamon Roll</h3>
+                <p>🎀 Pastry · Swirled with frosting</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Booking Reservation Section -->
+<section class="booking" id="booking">
+    <div class="booking-container">
+        <div class="booking-text">
+            <h2>Reserve Your Sweet Experience</h2>
+            <p>Book a table for afternoon tea, family gathering, or just to enjoy our fresh bakes. We’ll save the best seat for you.</p>
+        </div>
+        <div class="booking-form">
+            <input type="text" id="nameInput" placeholder="Full name" required>
+            <input type="email" id="emailInput" placeholder="Email address">
+            <input type="tel" id="phoneInput" placeholder="Phone number">
+            <input type="date" id="dateInput">
+            <select id="occasionSelect">
+                <option value="Afternoon Tea">Afternoon Tea</option>
+                <option value="Birthday Celebration">Birthday Celebration</option>
+                <option value="Casual Brunch">Casual Brunch</option>
+                <option value="Special Event">Special Event</option>
+            </select>
+            <button id="bookBtn">Request Booking</button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-col">
+            <h3>Abigail Bakery</h3>
+            <p>Artisanal bakeshop since 2012.<br>Authentic recipes, heartwarming flavors.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Visit Us</h4>
+            <p>42 Baker's Lane, Downtown<br>Cityville, 10001</p>
+            <p>📞 +1 (555) 342-8901</p>
+            <p>✉️ hello@abigailbakery.com</p>
+        </div>
+        <div class="footer-col">
+            <h4>Opening Hours</h4>
+            <p>Mon - Fri: 7:00 AM – 8:00 PM</p>
+            <p>Sat - Sun: 8:00 AM – 9:00 PM</p>
+        </div>
+        <div class="footer-col">
+            <h4>Connect</h4>
+            <div class="social">
+                <a href="#">📘 Instagram</a>
+                <a href="#">📌 Pinterest</a>
+                <a href="#">🐦 Twitter</a>
+                <a href="#">📘 Facebook</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Abigail Bakery – Freshly baked with love. All rights reserved.</p>
+    </div>
+</footer>
+
+<div id="toastMsg" class="toast-msg"></div>
+
+<script>
+    // Simple function to show toast message
+    function showMessage(text, isSuccess = true) {
+        const toast = document.getElementById('toastMsg');
+        toast.textContent = text;
+        toast.style.backgroundColor = isSuccess ? '#c59d5f' : '#b5651e';
+        toast.style.opacity = '1';
+        setTimeout(() => {
+            toast.style.opacity = '0';
+        }, 3000);
+    }
+
+    // Booking button handler
+    const bookBtn = document.getElementById('bookBtn');
+    if(bookBtn) {
+        bookBtn.addEventListener('click', function(e) {
+            const name = document.getElementById('nameInput')?.value.trim();
+            const date = document.getElementById('dateInput')?.value;
+            const occasion = document.getElementById('occasionSelect')?.value;
+            
+            if(!name) {
+                showMessage('❄️ Please enter your name to reserve.', false);
+                return;
+            }
+            if(!date) {
+                showMessage('📅 Please select a date for your reservation.', false);
+                return;
+            }
+            
+            // Friendly success simulation
+            showMessage(`✨ Thank you ${name}! Your ${occasion} booking for ${date} has been received. We'll reach out shortly. ✨`, true);
+            // optional clear some fields but keep name as placeholder
+            document.getElementById('nameInput').value = '';
+            document.getElementById('dateInput').value = '';
+            // no backend implementation, just frontend demo
+        });
+    }
+
+    // Optional: Smooth anchor already handled by CSS, but double-check
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const hash = this.getAttribute('href');
+            if(hash === "#" || hash === "") return;
+            const target = document.querySelector(hash);
+            if(target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+    
+    // Interactive: for any card click can show a mini info (bonus)
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const title = card.querySelector('.card-body h3')?.innerText;
+            if(title) {
+                showMessage(`🍰 You selected ${title} — an excellent choice!`, true);
+            }
+        });
+    });
+</script>
+</body>
+</html>
